@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingHorizontal="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TotalActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:background="@color/teal_200"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:padding="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextNumber1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        android:hint="Enter number a"/>
+
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginBottom="10dp"
+        android:hint="Enter number b"/>
+
+    <EditText
+        android:id="@+id/editTextNumber3"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Enter number c"/>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Total"/>
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Result"
+        android:gravity="center"
+        android:background="@color/teal_200"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+</LinearLayout>
