@@ -27,12 +27,18 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -46,7 +52,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Login()
+//            Login()
+            ImageURL()
         }
     }
 }
@@ -63,13 +70,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     Lab4_LoginTheme {
-//        Login()
+        Login()
 //        ListUser()
 //        SimpleListView()
     }
 }
+
 @Composable
 fun Login() {
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -137,16 +146,29 @@ fun Login() {
 }
 @Composable
 fun renderLogo() {
-    Image(
-        painter = painterResource(id = R.mipmap.logo),
-        contentDescription = "Flower",
-        modifier = Modifier
-            .size(200.dp)
-            .fillMaxWidth()
-    )
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Image(
+            painter = painterResource(id = R.mipmap.logo),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .size(200.dp)
+                .fillMaxWidth()
+        )
+    }
+
 }
 @Composable
 fun renderEmail() {
+
+    val context = LocalContext.current
+
+    var email by remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .padding(vertical = 16.dp,)
@@ -160,14 +182,14 @@ fun renderEmail() {
                 .padding(bottom = 8.dp,)
         )
         BasicTextField(
-            value = "hadao1204@gmail.com",
-            onValueChange = { },
+            value = email,
+            onValueChange = {email = it},
             textStyle = TextStyle(
                 color = Color(0xFF181725),
                 fontSize = 18.sp,
             ),
             modifier = Modifier
-                .padding(vertical = 12.dp,)
+                .padding(vertical = 12.dp)
                 .height(22.dp)
                 .fillMaxWidth()
                 .background(
@@ -188,6 +210,11 @@ fun renderEmail() {
 }
 @Composable
 fun renderPassword() {
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier = Modifier
             .padding(vertical = 16.dp,)
@@ -201,8 +228,8 @@ fun renderPassword() {
                 .padding(bottom = 8.dp,)
         )
         BasicTextField(
-            value = "*************",
-            onValueChange = { },
+            value = password,
+            onValueChange = { password = it},
             textStyle = TextStyle(
                 color = Color(0xFF181725),
                 fontSize = 18.sp,
@@ -229,6 +256,9 @@ fun renderPassword() {
 }
 @Composable
 fun renderButtonLogin() {
+
+
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
